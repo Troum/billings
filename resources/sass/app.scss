@@ -1,0 +1,8 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap-vue/src/index.scss';
+@import '../../node_modules/vue-loading-overlay/dist/vue-loading.css';
+@import '../../node_modules/v-calendar/lib/v-calendar.min.css';
+@import '../../node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
+html, body, #app {
+  height: 100%;
+}
