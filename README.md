@@ -29,12 +29,12 @@ To use it paste this code in `.env` file.
 
 Setup database connection in `.env` file.
 
-**DB_CONNECTION=mysql**
-**DB_HOST=127.0.0.1**
-**DB_PORT=3306**
-**DB_DATABASE=your_database**
-**DB_USERNAME=your_username**
-**DB_PASSWORD=your_password**
+**DB_CONNECTION=mysql** 
+**DB_HOST=127.0.0.1** 
+**DB_PORT=3306** 
+**DB_DATABASE=your_database** 
+**DB_USERNAME=your_username** 
+**DB_PASSWORD=your_password** 
 
 To work with Algolia scout you need to set SCOUT_QUEUE=true:
 
