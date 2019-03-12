@@ -37,9 +37,9 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
 To work with Algolia scout you need to set SCOUT_QUEUE=true:
-
-**SCOUT_QUEUE=true**
-
+```
+SCOUT_QUEUE=true
+```
 After that you need to run `php artisan config:cache` and `php artisan migrate`
 
 ## Sixth step
