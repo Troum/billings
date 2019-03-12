@@ -46,16 +46,20 @@ class SendPlannedTransfers extends Command
         $transfers = Plan::all();
         foreach($transfers as $transfer)
         {
-            if(Carbon::parse($transfer->planned_at)->lte(Carbon::now()))
+            if(Carbon::parse($transfer->planned_at)->lte(Carbon::now()->addHours(3)))
             {
                 $user = User::whereId($transfer->to)->first();
                 $from = User::whereId($transfer->user_id)->first();
+
                 $to = $user->account()->where('user_id', $transfer->to)->first();
                 $result = floatval($to->amount) + floatval($transfer->amount);
                 $to->amount = round($result,2);
                 $to->save();
-                Mail::to($user->email)->send(new TransferMail($from->email, $from->name, $to->amount, $user->name));
-                Mail::to($from->email)->send(new SendTransferMail($to->email, $user->name, $transfer->amount));
+
+                Mail::to($user->email)->send(new TransferMail($from->email, $from->name, $transfer->amount, $to->amount));
+
+                Mail::to($from->email)->send(new SendTransferMail($from->name, $user->name, $transfer->amount));
+
                 $transfer->delete();
             }
         }

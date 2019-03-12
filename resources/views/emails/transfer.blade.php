@@ -1,10 +1,12 @@
 @component('mail::message')
-# Hi, {{$to}}
+        # Hello
 
-You get new transfer from {{$name}}.<br>
-    @component('mail::panel')
+        You get new transfer from {{$name}}
+
         Amount of transfer: {{$content}}
-    @endcomponent
-<br>
-    Email of sender is {{$email}}
+
+        Your current account balance: {{$current}}
+
+        Email of sender is {{$email}}
+
 @endcomponent

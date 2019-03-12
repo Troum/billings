@@ -11,19 +11,19 @@ class SendTransferMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $email;
-    public $content;
     public $name;
+    public $content;
+    public $receiver;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $name, $content)
+    public function __construct($name, $receiver, $content)
     {
-        $this->email = $email;
         $this->name = $name;
+        $this->receiver = $receiver;
         $this->content = $content;
     }
 
