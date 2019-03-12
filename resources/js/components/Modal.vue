@@ -83,6 +83,7 @@
                             this.planned = !this.planned;
                             this.plannedMessage = response.data.success;
                             localStorage.setItem('amount',response.data.amount);
+                            this.update();
                             this.datetime = '';
                             this.selectedAmount = null;
                         })
@@ -113,6 +114,9 @@
                 if(this.amountError) {
                     this.amountError = false;
                 }
+            },
+            update() {
+                this.$emit('update', this.convertToDecimal(localStorage.getItem('amount')));
             }
         }
     }
@@ -121,3 +125,4 @@
 <style scoped>
 
 </style>
+

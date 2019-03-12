@@ -14,17 +14,19 @@ class TransferMail extends Mailable
     public $email;
     public $content;
     public $name;
+    public $to;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $name, $content)
+    public function __construct($email, $name, $content, $to)
     {
         $this->email = $email;
         $this->name = $name;
         $this->content = $content;
+        $this->to = $to;
     }
 
     /**

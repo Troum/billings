@@ -1,12 +1,8 @@
 @component('mail::message')
-# Introduction
+    # Hi, {{$name}}
 
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
+    You send new transfer to {{$to}}.<br>
+    @component('mail::panel')
+        Amount of transfer: {{$content}}
+    @endcomponent
 @endcomponent

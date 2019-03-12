@@ -1,6 +1,11 @@
 <template>
     <b-col cols="12" class="h-100">
-        <b-row class="h-100" align-h="center" align-v="center">
+        <b-row class="mt-5 pt-5" align-h="end">
+            <b-col cols="2">
+                <span class="h4">Current amount: <strong>{{amount}}</strong></span>
+            </b-col>
+        </b-row>
+        <b-row class="h-100 mt-5 pt-5" align-h="center">
             <b-col cols="4">
                 <b-card title="List of registered users" sub-title="You can choose anyone">
                     <b-card-body>
@@ -42,7 +47,7 @@
                 </b-card>
             </b-col>
         </b-row>
-        <money-modal :data="usersData" :amount="userAccount"></money-modal>
+        <money-modal @update="updateAccount($event)" :data="usersData" :amount="amount"></money-modal>
     </b-col>
 </template>
 
@@ -75,7 +80,7 @@
                 error: false,
                 query: '',
                 usersData: null,
-                userAccount: null
+                amount: null
                 
             }
         },
@@ -91,7 +96,7 @@
                     })
                     .then(response => {
                         localStorage.setItem('amount', response.data.amount);
-                        this.userAccount = localStorage.getItem('amount');
+                        this.amount = localStorage.getItem('amount');
                     })
                     .catch(error => {
                         console.log(error.response.data.error);
@@ -126,6 +131,9 @@
             },
             passData(item) {
                 this.usersData = item;
+            },
+            updateAccount(event) {
+                this.amount = event;
             }
         }
     }

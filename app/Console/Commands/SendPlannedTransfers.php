@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Account;
 use App\Mail\SendTransferMail;
 use App\Mail\TransferMail;
 use App\Plan;
@@ -55,8 +54,8 @@ class SendPlannedTransfers extends Command
                 $result = floatval($to->amount) + floatval($transfer->amount);
                 $to->amount = round($result,2);
                 $to->save();
-                Mail::to($user->email)->send(new TransferMail($from->email, $from->name, $to->amount));
-                Mail::to($from->email)->send(new SendTransferMail($user->email, $user->name, $transfer->amount));
+                Mail::to($user->email)->send(new TransferMail($from->email, $from->name, $to->amount, $user->name));
+                Mail::to($from->email)->send(new SendTransferMail($to->email, $user->name, $transfer->amount));
                 $transfer->delete();
             }
         }

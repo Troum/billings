@@ -1812,6 +1812,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1840,7 +1845,7 @@ __webpack_require__.r(__webpack_exports__);
       error: false,
       query: '',
       usersData: null,
-      userAccount: null
+      amount: null
     };
   },
   mounted: function mounted() {
@@ -1857,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         localStorage.setItem('amount', response.data.amount);
-        _this.userAccount = localStorage.getItem('amount');
+        _this.amount = localStorage.getItem('amount');
       }).catch(function (error) {
         console.log(error.response.data.error);
       });
@@ -1892,6 +1897,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     passData: function passData(item) {
       this.usersData = item;
+    },
+    updateAccount: function updateAccount(event) {
+      this.amount = event;
     }
   }
 });
@@ -2093,6 +2101,9 @@ __webpack_require__.r(__webpack_exports__);
           _this.planned = !_this.planned;
           _this.plannedMessage = response.data.success;
           localStorage.setItem('amount', response.data.amount);
+
+          _this.update();
+
           _this.datetime = '';
           _this.selectedAmount = null;
         }).catch(function (error) {
@@ -2121,6 +2132,9 @@ __webpack_require__.r(__webpack_exports__);
       if (this.amountError) {
         this.amountError = false;
       }
+    },
+    update: function update() {
+      this.$emit('update', this.convertToDecimal(localStorage.getItem('amount')));
     }
   }
 });
@@ -67042,10 +67056,21 @@ var render = function() {
     [
       _c(
         "b-row",
-        {
-          staticClass: "h-100",
-          attrs: { "align-h": "center", "align-v": "center" }
-        },
+        { staticClass: "mt-5 pt-5", attrs: { "align-h": "end" } },
+        [
+          _c("b-col", { attrs: { cols: "2" } }, [
+            _c("span", { staticClass: "h4" }, [
+              _vm._v("Current amount: "),
+              _c("strong", [_vm._v(_vm._s(_vm.amount))])
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        { staticClass: "h-100 mt-5 pt-5", attrs: { "align-h": "center" } },
         [
           _c(
             "b-col",
@@ -67270,7 +67295,12 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("money-modal", {
-        attrs: { data: _vm.usersData, amount: _vm.userAccount }
+        attrs: { data: _vm.usersData, amount: _vm.amount },
+        on: {
+          update: function($event) {
+            return _vm.updateAccount($event)
+          }
+        }
       })
     ],
     1
