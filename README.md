@@ -13,7 +13,7 @@ After installation of all needed dependencies, you have to run `npm install` to 
 
 After installing you have to setup `.env` file. You have to just rename `.env.example` to `.env`.
 After that you have to generate application key by running next command `php artisan key:generate`.
-As soon as this system use **JWT Authentication** you need to generate `jwt-key`.
+Cause this system use **JWT Authentication** you need to generate `jwt-key`.
 Run this command `php atisan jwt:secret`
 
 ## Fourth step
@@ -41,6 +41,16 @@ To work with Algolia scout you need to set SCOUT_QUEUE=true:
 SCOUT_QUEUE=true
 ```
 After that you need to run `php artisan config:cache` and `php artisan migrate`
+
+Cause this system use e-mail notification you need to setup `SMTP` settings in `.env` file (for testing send message you can use MailTrap.io):
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=encryption
+```
 
 ## Sixth step
 
