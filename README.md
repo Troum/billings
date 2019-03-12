@@ -59,7 +59,7 @@ All is ok.
 
 ## Seventh step
 
-Now you can run project. If you have installed **PHP** on your machine **(require **PHP>=7.1**) - you can just run `php artisan serve`
+Now you can run project. If you have installed **PHP** on your machine (require **PHP>=7.1**) - you can just run `php artisan serve`
 If you not - you can use VM or anything else.
 
 **Note**: if you change URL to project in your system (http://example.loc instead of http://localhost:8000/) you have to change it in
