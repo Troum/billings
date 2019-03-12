@@ -63,4 +63,13 @@ If you not - you can use VM or anything else.
 If you want to login, just click on "Dasboard" that placed on nav-panel - and you will path to login page form. If you want - you can register in system.
 Just click "Register" link placed on login form.
 
+## Planned working
+
+To use planned (on server) you need to setup **Crone**
+
+```
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+To test sshedule, run this command `php artisan schedule:run` in console 
+
  
