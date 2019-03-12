@@ -82,6 +82,6 @@ To use planned (on server) you need to setup **Crone**
 ```
 * * * * * cd /path-to-project && php artisan schedule:run >> /dev/null 2>&1
 ```
-To test schedule, run this command `php artisan schedule:run` in console 
+To test schedule, run this command `php artisan command:sendplannedtransfers` in console 
 
  
